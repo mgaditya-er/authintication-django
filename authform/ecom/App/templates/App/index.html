@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h2>Wellcome to Home page</h2>
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+
+    <strong>Message : </strong>{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<h3>Hello {{fname}}</h3>
+<h4>You are successfully logged In !</h4>
+<button type="submit"><a href="/signout"> Sign Out</a></button>
+{% else %}
+
+<button type="submit"><a href="/signup"> Sign Up</a></button>
+<button type="submit"><a href="/signin"> Sign In</a></button>
+{% endif %}
+
+
+</body>
+</html>
